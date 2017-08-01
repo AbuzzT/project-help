@@ -1,5 +1,13 @@
+import os
+
 DEBUG = False
 ALLOWED_HOSTS =  ['project-help.herokuapp.com', '.yourdomain.com']
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # add this
 import dj_database_url
