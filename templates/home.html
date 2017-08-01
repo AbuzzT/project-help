@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}{{ block.super }}{% endblock %}
+
 {% block header %}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('static/img/home-bg.jpg')">
@@ -21,7 +23,7 @@
     <!-- Main Content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-10 offset-md-1">
+            <div class="col-md-12">
                 <h3 class="text-center mb-3"> See whats trending </h3>
                 <h4 class="text-center mb-4">
                     <span class="badge badge-pill badge-default">Painting</span>
@@ -31,24 +33,27 @@
                     <span class="badge badge-pill badge-info">Plumbing</span>
                     <span class="badge badge-pill badge-danger">IT Help</span>
                 </h4>
-                <hr>
-                <!-- section -->
-                <h3 class="text-center m-5"> What do you need help with? </h3>
-                <div class="card-deck justify-content-around">
-                  {% for category in categories %}
-                  <div class="card w-25 mb-2">
-                    <img class="card-img-top" src="https://unsplash.it/300/200/?random" alt="Card image cap">
-                    <div class="">
-                      <h5 class="card-title p-1">{{ category|title }}</h5>
-                    </div>
-                  </div>  
-                  {% endfor %}                
-                </div>
-                <!-- Pager -->
-                <div class="clearfix">
-                    <a class="btn btn-secondary float-right" href="#">Older Posts &rarr;</a>
-                </div>
+                <hr>        
             </div>
         </div>
+    </div>
+    <div class="container">
+    <h3 class="text-center m-5"> What do you need help with? </h3>
+    <div class="card-deck justify-content-around">
+      {% for category in categories %}
+
+        <a href="#" class="card mb-4">
+        <img class="card-img-top img-fluid" src="{{ category.image.url }}" alt="{{ category }}">
+        <div class="">
+          <h5 class="card-title p-1">{{ category|title }}</h5>
+        </div>
+        </a>
+
+      
+    
+      {% cycle '' '<div class="w-100 hidden-md-up"><!-- wrap every 2 on sm--></div>' %}
+      {% cycle '' '' '<div class="w-100 hidden-sm-down"><!-- wrap every 3 on md--></div>' %}
+      {% endfor %}                
+    </div>
     </div>
 {% endblock %}

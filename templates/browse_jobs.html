@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Browse Jobs - {{ block.super }}{% endblock %}
+
+{% block header %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('../static/img/about-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-heading">
+                        <h1>Browse Jobs</h1>
+                        <span class="subheading"> No need is too small, no job is to big</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Action
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                      <div role="separator" class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group">
+                {% for job in jobs %}
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" role="button">
+
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{job.title}}</h5>
+                      <small>{{job.date}}</small>
+                    </div>
+                    {# <p class="mb-1">there are 3 offers</p> #}
+                    <div class="d-flex w-100 justify-content-between">
+                        <h6>3 offers</h6>
+                        <small>{% if job.online %} Online Job {% else %}{{job.city}}{% endif %}</small>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between">
+                        {% for tag in job.tags.all %}
+                        <span class="badge badge-pill badge-default">{{tag}}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="d-flex w-100 justify-content-center">
+                        <small>{{ job.category }}</small>
+                    </div>
+
+
+                </a>
+                {% endfor %}
+                </div>
+
+            </div>
+            <div class="col-md-7 embed-responsive">
+                <iframe
+                  class="embed-responsive-item"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBTm0X3W7v7A96piBUJmRnARUF-0QnxT34
+                    &q=none" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+{% endblock %}
