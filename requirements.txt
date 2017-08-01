@@ -5,6 +5,7 @@ olefile==0.44
 Pillow==4.2.1
 pytz==2017.2
 dj-database-url==0.4.1
+dj-static==0.0.6
 gunicorn==19.6.0
 psycopg2==2.6.2
 whitenoise==3.2
