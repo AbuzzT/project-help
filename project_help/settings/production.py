@@ -1,7 +1,7 @@
 import os
 from django.conf import settings
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS =  ['project-help.herokuapp.com', '.yourdomain.com']
 DATABASES = {
     'default': {
