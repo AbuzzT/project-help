@@ -43,7 +43,7 @@
       {% for category in categories %}
 
         <a href="#" class="card mb-4">
-        <img class="card-img-top img-fluid" src="{{ category.image.url }}" alt="{{ category }}">
+        <img class="card-img-top img-fluid" src="{% static category.image.url %}" alt="{{ category }}">
         <div class="">
           <h5 class="card-title p-1">{{ category|title }}</h5>
         </div>
